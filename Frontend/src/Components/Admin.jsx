@@ -1,6 +1,5 @@
 
 import { useNavigate } from 'react-router-dom';
-import logo from '../ImagenesP/ImagenesLogin/LOGOPETHOME.png';
 import './DOCSS/Admin.css';  
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
