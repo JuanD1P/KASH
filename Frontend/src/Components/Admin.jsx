@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import './DOCSS/Admin.css';  
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaTrash } from 'react-icons/fa';
+import logo from '../ImagenesP/ImagenesLogin/Logo.png';
   
 
 const Admin = () => {
@@ -43,8 +45,12 @@ const Admin = () => {
     };
 
     return (
+        <div className='PrincipalCOn'>
+            <div className="logoTopRight">
+                <img src={logo} alt="Logo" />
+            </div>
         <div className="admin-container">
-            <h2 className="admin-title">Panel de Administración</h2>
+            <h2 className="admin-title"><strong>Panel de Administración</strong></h2>
             <table className="admin-table">
                 <thead>
                     <tr>
@@ -52,38 +58,41 @@ const Admin = () => {
                         <th>Nombre Completo</th>
                         <th>Email</th>
                         <th>Rol</th>
-                        <th>Acciones</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     {usuarios.map((usuario) => (
                         <tr key={usuario.id}>
-                            <td>{usuario.id}</td>
-                            <td>{usuario.nombre_completo}</td>
-                            <td>{usuario.email}</td>
-                            <td>
-                                <select 
-                                    className="admin-role-select"
-                                    value={usuario.rol} 
-                                    onChange={(e) => cambiarRol(usuario.id, e.target.value)}
-                                >
-                                    <option value="USER">USER</option>
-                                    <option value="ADMIN">ADMIN</option>
-                                </select>
-                            </td>
-                            <td>
-                                <button 
-                                    className="admin-delete-btn" 
-                                    onClick={() => eliminarUsuario(usuario.id)}
-                                >
-                                    ❌ Eliminar
-                                </button>
-                            </td>
+                        <td data-label="ID">{usuario.id}</td>
+                        <td data-label="Nombre Completo">{usuario.nombre_completo}</td>
+                        <td data-label="Email">{usuario.email}</td>
+                        <td data-label="Rol">
+                            <select 
+                            className="admin-role-select"
+                            value={usuario.rol}
+                            onChange={(e) => cambiarRol(usuario.id, e.target.value)}
+                            >
+                            <option value="USER">USER</option>
+                            <option value="ADMIN">ADMIN</option>
+                            </select>
+                        </td>
+                        <td data-label="Eliminar">
+                        <button 
+                            className="admin-delete-btn" 
+                            onClick={() => eliminarUsuario(usuario.id)}
+                            title="Eliminar usuario"
+                        >
+                            <FaTrash />
+                        </button>
+                        </td>
                         </tr>
                     ))}
-                </tbody>
+                    </tbody>
+
 
             </table>
+        </div>
         </div>
     );
 };
