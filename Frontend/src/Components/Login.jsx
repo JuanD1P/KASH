@@ -36,6 +36,7 @@ const Login = () => {
                 if (result.data.id) {
                     localStorage.setItem('user-id', result.data.id); 
                 }
+                
     
                 console.log("Token guardado:", localStorage.getItem("auth-token"));
                 console.log("Rol guardado:", localStorage.getItem("user-role"));
