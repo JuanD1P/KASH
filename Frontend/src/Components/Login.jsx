@@ -14,6 +14,10 @@ const Login = () => {
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;
 
+    useEffect(() => {
+        localStorage.clear();
+    }, []);
+    
     const handleSubmit = (event) => {
         event.preventDefault();
         setError(null);

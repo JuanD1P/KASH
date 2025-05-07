@@ -42,7 +42,6 @@ const FormSuscripcion = () => {
       return;
     }
 
-    // Calcular fecha de vencimiento
     const hoy = new Date();
     hoy.setDate(hoy.getDate() + parseInt(formData.diasSus)); 
     const fechaVencimiento = hoy.toISOString().split('T')[0];
@@ -113,8 +112,6 @@ const FormSuscripcion = () => {
     ← Volver
   </button>
       </form>
-     
-
     </div>
   );
   

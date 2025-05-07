@@ -6,7 +6,6 @@ import axios from 'axios';
 import { FaTrash } from 'react-icons/fa';
 import logo from '../ImagenesP/ImagenesLogin/Logo.png';
   
-
 const Admin = () => {
     const [usuarios, setUsuarios] = useState([]);
 
@@ -23,7 +22,6 @@ const Admin = () => {
         }
     };
     
-
     const cambiarRol = async (id, nuevoRol) => {
         try {
             await axios.put(`http://localhost:3000/auth/usuarios/${id}`, { rol: nuevoRol });
@@ -89,8 +87,6 @@ const Admin = () => {
                         </tr>
                     ))}
                     </tbody>
-
-
             </table>
         </div>
         </div>
@@ -98,5 +94,3 @@ const Admin = () => {
 };
 
 export default Admin;
-
-

@@ -91,9 +91,14 @@ function Inicio() {
   };
 
   const handleEditar = (sus) => {
+    const fechaFormateada = sus.fechaVencimiento
+      ? new Date(sus.fechaVencimiento).toISOString().split('T')[0]
+      : '';
     setEditarId(sus.idsusc);
-    setFormData({ ...sus });
+    setFormData({ ...sus, fechaVencimiento: fechaFormateada });
   };
+  
+  
 
   const guardarEdicion = async () => {
     try {
@@ -205,7 +210,18 @@ function Inicio() {
                         <td><input type="text" value={formData.nombresus} onChange={(e) => setFormData({ ...formData, nombresus: e.target.value })} /></td>
                         <td><input type="number" value={formData.monto} onChange={(e) => setFormData({ ...formData, monto: e.target.value })} /></td>
                         <td><input type="number" value={formData.diasSus} onChange={(e) => setFormData({ ...formData, diasSus: e.target.value })} /></td>
-                        <td><input type="date" value={formData.fechaVencimiento} onChange={(e) => setFormData({ ...formData, fechaVencimiento: e.target.value })} /></td>
+                        <td><input
+  type="date"
+  value={
+    formData.fechaVencimiento
+      ? new Date(formData.fechaVencimiento).toISOString().split('T')[0]
+      : ''
+  }
+  onChange={(e) =>
+    setFormData({ ...formData, fechaVencimiento: e.target.value })
+  }
+/>
+</td>
                         <td><input type="text" value={formData.categoria} onChange={(e) => setFormData({ ...formData, categoria: e.target.value })} /></td>
                         <td>
                           <button onClick={guardarEdicion}>Guardar</button>
@@ -217,7 +233,7 @@ function Inicio() {
                         <td>{s.nombresus}</td>
                         <td>${s.monto}</td>
                         <td>{s.diasSus}</td>
-                        <td>{s.fechaVencimiento}</td>
+                        <td>{new Date(s.fechaVencimiento).toISOString().split('T')[0]}</td>
                         <td>{s.categoria}</td>
                         <td>
                           <button onClick={() => handleEditar(s)}>Editar</button>
@@ -244,5 +260,4 @@ function Inicio() {
     </div>
   );
 }
-
 export default Inicio;
